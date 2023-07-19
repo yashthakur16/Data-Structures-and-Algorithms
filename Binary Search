@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+
+bool search(int arr[],int n,int k)
+{
+    int s=0;
+    int e=n-1;
+    int mid=s+(e-s/(2));
+    while(s<=e)
+    {
+        if(arr[mid]==k)
+        {
+            return 1;
+        }
+        if(k>arr[mid])
+        {
+            s=mid+1;
+        }
+        else
+        {
+            e=mid-1;
+        }
+        mid=s+(e-s/(2));
+    }
+
+    return 0;
+}
+
+int main()
+{
+    int arr[10]={6,7,18,26,34,46,59,78,84,97};
+    cout<<"Enter the key : ";
+    int k ;
+    cin>>k;
+    if(search(arr,10,k)==1)
+    {
+        cout<<"Number Present ";
+    }
+    else
+    {
+        cout<<"Number not Present ";
+    }
+}
