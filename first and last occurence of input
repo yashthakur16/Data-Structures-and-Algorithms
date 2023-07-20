@@ -1,0 +1,71 @@
+#include<iostream>
+using namespace std;
+
+int firstoccurence(int arr[],int n, int k)
+{
+    int start=0;
+    int end=n-1;
+    int mid=(start+end)/2;
+    int ans=-1;
+
+    while(start<=end)
+    {
+        if(arr[mid]==k)
+        {
+            ans=mid;
+            start=mid-1;
+        }
+        if(arr[mid]<k)
+        {
+            start=mid+1;
+        }
+        else
+        {
+            end=mid-1;
+        }
+
+        mid=(start+end)/2;
+    }
+
+    return ans;
+}
+
+int lastoccurence(int arr[],int n, int k)
+{
+    int start=0;
+    int end=n-1;
+    int mid=(start+end)/2;
+    int ans=-1;
+
+    while(start<=end)
+    {
+        if(arr[mid]==k)
+        {
+            ans=mid;
+            start=mid+1;
+        }
+        if(arr[mid]<k)
+        {
+            start=mid+1;
+        }
+        if(arr[mid]>k)
+        {
+            end=mid-1;
+        }
+
+        mid=(start+end)/2;
+    }
+
+    return ans;
+}
+
+int main()
+{
+    int arr[10]={2,3,4,5,6,6,6,7,8,9};
+    int k;
+    cout<<"Enter the key ";
+    cin>>k;
+    cout<<firstoccurence(arr,10,k);
+    cout<<lastoccurence(arr,10,k);
+    return 0;
+}
