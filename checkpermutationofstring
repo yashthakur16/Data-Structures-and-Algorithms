@@ -1,0 +1,81 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+bool checkequal(int arr1[],int arr2[])
+{
+    for(int i=0;i<26;i++)
+    {
+        if(arr1[i]!=arr2[i])
+        {
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+bool checkinclusion(string s1, string s2)
+{
+    int arr1[26]={0};
+    
+    for(int i=0;i<s1.size();i++)
+    {
+        int index=s1[i]-'a';
+        arr1[index]++;
+    }
+
+    int arr2[26]={0};
+    int i=0;
+
+    while(i<s2.size()&&i<s1.size())
+    {
+        int index=s2[i]-'a';
+        arr2[index]++;
+        i++;
+    }
+
+    if(checkequal(arr1,arr2))
+    {
+        return true;
+    }
+
+    while(i<s2.size())
+    {
+        int index=s2[i]-'a';
+        arr2[index]++;
+
+        index=s2[i-s1.size()]-'a';
+        arr2[index]--;
+
+
+        if(checkequal(arr1,arr2))
+        {
+            return true;
+        }
+        i++;
+
+
+    }
+    return false;
+
+}
+
+int main()
+{
+    string s1="cb";
+    string s2="abcd";
+    
+
+    if(checkinclusion(s1,s2))
+    {
+        cout<<"true";
+    }
+    else
+    {
+        cout<<"false";
+    }
+
+    return 0;
+
+}
