@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) 
+    {
+        stack<int> st;
+        st.push(nums[0]);
+        int s=1;
+        int e=nums.size();
+
+        while(s<e)
+        {
+            if(st.top()!=nums[s])
+            {
+                st.push(nums[s]);
+            }
+            s++;
+        }
+        int k=st.size();
+        for(int i=k-1;i>=0;i--)
+        {
+            nums[i]=st.top();
+            st.pop();
+        }
+
+        return k;      
+    }
+};
