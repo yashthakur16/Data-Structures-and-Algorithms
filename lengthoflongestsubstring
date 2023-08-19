@@ -1,0 +1,39 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) 
+    {
+        string ans;
+        int n=s.size();
+        if(n==0)
+        {
+            return 0;
+        }
+        ans.push_back(s[0]);
+        int length=0;
+
+        for(int i=1;i<n;i++)
+        {
+            if(ans.find(s[i])== string::npos)
+            {
+                ans.push_back(s[i]);
+            }
+            else
+            {
+                if(length<ans.size())
+                {
+                    length=ans.size();
+                }
+                ans.erase(0,ans.find(s[i])+1);
+                ans.push_back(s[i]);
+            }
+        }
+
+        if(length<ans.size())
+        {
+            length=ans.size();
+        }
+
+        return length;
+
+    }
+};
