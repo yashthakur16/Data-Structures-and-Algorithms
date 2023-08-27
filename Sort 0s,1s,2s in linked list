@@ -1,0 +1,79 @@
+/*
+Following is the class structure of the Node class:
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node()
+    {
+        this->data = 0;
+        next = NULL;
+    }
+    Node(int data)
+    {
+        this->data = data; 
+        this->next = NULL;
+    }
+    Node(int data, Node* next)
+    {
+        this->data = data;
+        this->next = next;
+    }
+};
+*/
+void insertattail(Node* &tail,Node *curr)
+{
+    
+    tail->next=curr;
+    tail=curr;
+}
+Node* sortList(Node *head)
+{
+
+    Node* zero=new Node(5);
+    Node* zerotail=zero;
+    Node* one=new Node(5);
+    Node* onetail=one;
+    Node* two=new Node(5);
+    Node* twotail=two;
+    Node* temp=head;
+
+    while(temp != NULL)
+    {
+        int data=temp->data;
+        if(data==0)
+        {
+            insertattail(zerotail,temp);
+        }
+        else if(data==1)
+        {
+            insertattail(onetail,temp);
+        }
+        else
+        {
+            insertattail(twotail,temp);
+        }
+        temp=temp->next;
+    }
+    if(one->next !=NULL)
+    {
+        zerotail->next=one->next;
+    }
+    else
+    {
+        zerotail->next=two->next;
+    }
+    
+    onetail->next=two->next;
+    twotail->next=NULL;
+
+    head=zero->next;
+    delete(zero);
+    delete(one);
+    delete(two);
+
+    return head;
+
+}
