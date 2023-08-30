@@ -1,0 +1,103 @@
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+
+class Solution {
+public:
+
+    void inserttail(Node* &head,Node* &tail,int val)
+    {
+        Node* temp=new Node(val);
+        if(head==NULL)
+        {
+            head=temp;
+            tail=temp;
+        }
+        else
+        {
+            tail->next=temp;
+            tail=temp;
+        }
+        return ;
+    }
+
+    Node* copyRandomList(Node* head) 
+    {
+        if(head==NULL)
+        {
+            return NULL;
+        }
+        Node* clonehead=NULL;
+        Node* clonetail=NULL;
+
+        Node* temp=head;
+
+        while(temp !=NULL)
+        {
+            inserttail(clonehead,clonetail,temp->val);
+            temp=temp->next;
+        }
+        
+        Node *curr=head;
+        Node *next=NULL;
+        Node *curr2=clonehead;
+        Node *next2=NULL;
+
+        while(curr !=NULL)
+        {
+            next=curr->next;
+            curr->next=curr2;
+            next2=curr2->next;
+            curr2->next=next;
+
+            curr=next;
+            curr2=next2;
+        }
+
+        temp=head;
+
+        while(temp !=NULL)
+        {
+            if(temp->random !=NULL)
+            {
+                temp->next->random=temp->random->next;
+            }
+            else
+            {
+                temp->next->random=NULL;
+            }
+            temp=temp->next->next;    
+        }
+
+        curr=head;
+        curr2=clonehead;
+
+        while(curr2 !=NULL)
+        {
+            curr->next=curr2->next;
+            
+
+            if(curr->next !=NULL)
+            {
+                curr=curr->next;
+            }
+            curr2->next=curr->next;
+            
+            curr2=curr2->next;
+        }
+
+        return clonehead;
+    }
+};
