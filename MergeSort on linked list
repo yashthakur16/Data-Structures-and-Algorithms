@@ -1,0 +1,94 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+
+
+    ListNode* findmiddle(ListNode* &head)
+    {
+        ListNode* pro=head->next;
+        ListNode* noob=head;
+
+        while(pro !=NULL && pro->next !=NULL)
+        {
+            pro=pro->next->next;
+            noob=noob->next;
+        }
+
+        return noob;
+    }
+
+    ListNode* merge(ListNode* &left,ListNode* &right)
+    {
+        if(left==NULL)
+        {
+            return right;
+        }
+        if(right==NULL)
+        {
+            return left;
+        }
+        ListNode *first=left;
+        ListNode *second=right;
+        ListNode *ans=new ListNode(-1);
+        ListNode *temp=ans;
+        while(first !=NULL && second !=NULL)
+        {
+            if(first->val < second->val)
+            {
+                temp->next=first;
+                temp=first;
+                first=first->next;
+            }
+            else
+            {
+                temp->next=second;
+                temp=second;
+                second=second->next;
+            }
+        }
+
+        while(first !=NULL)
+        {
+            temp->next=first;
+            temp=first;
+            first=first->next;
+        }
+        while(second !=NULL)
+        {
+            temp->next=second;
+            temp=second;
+            second=second->next;
+        }
+
+        return ans->next;
+    }
+
+    ListNode* sortList(ListNode* head) 
+    {
+        if(head==NULL || head->next==NULL)
+        {
+            return head;
+        }
+
+        ListNode* mid=findmiddle(head);
+        ListNode* left=head;
+        ListNode* right=mid->next;
+        mid->next=NULL;
+
+        left=sortList(left);
+        right=sortList(right);
+
+        ListNode* result=merge(left,right);
+
+        return result;
+    }
+};
