@@ -1,0 +1,24 @@
+#include <bits/stdc++.h> 
+void deleteMiddle(stack<int>&inputStack, int N)
+{
+   int middle=N/2;
+   int *arr=new int[middle+1];
+   int i=0;
+
+   while(middle !=0)
+   {
+      arr[i++]=inputStack.top();
+      inputStack.pop();
+      middle--;
+   }
+   inputStack.pop();
+   i--;
+
+   while(i>=0)
+   {
+      inputStack.push(arr[i--]);
+   }
+
+   return ;
+
+}
