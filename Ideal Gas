@@ -1,0 +1,13 @@
+string ninjaAndIdealGas(int p, int v, int n, int r, int t) 
+{
+    // Calculate the left-hand side (LHS) and right-hand side (RHS) of the ideal gas equation
+    long long int lhs = (long long)p * v;
+    long long int rhs = (long long)n * r * t;
+    
+    // Check if the LHS is equal to the RHS
+    if (lhs == rhs) {
+        return "YES";  // It's an ideal gas
+    } else {
+        return "NO";   // It's not an ideal gas
+    }
+}
