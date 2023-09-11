@@ -1,0 +1,22 @@
+#include <stack>
+
+vector<int> nextSmallerElement(vector<int> &arr, int n)
+{
+    stack <int> ans;
+    ans.push(-1);
+
+    int m=arr.size()-1;
+
+    for(int i=m;i>=0;i--)
+    {
+        int b=arr[i];
+        while(ans.top()>=b)
+        {
+            ans.pop();
+        }
+        arr[i]=ans.top();
+        ans.push(b);
+        
+    }
+    return arr;
+}
