@@ -1,0 +1,67 @@
+#include <bits/stdc++.h> 
+class Queue {
+public:
+        int front1;
+        int rear;
+        int size;
+        int *arr;
+    Queue() 
+    {
+        front1=0;
+        rear=0;
+        size=100001;
+        arr=new int[size];
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() 
+    {
+        return (front1==rear) ? true : false;
+    }
+
+    void enqueue(int data) 
+    {
+        if(rear==size)
+        {
+            cout<<"Queue is full ";
+            return ;
+        }
+        
+        arr[rear]=data;
+        rear++;
+        
+    }
+
+    int dequeue() 
+    {
+       if(front1==rear)
+       {
+           return -1;
+       }
+       else
+       {
+           int element=arr[front1];
+           arr[front1]==-1;
+           front1++;
+           if(front1==rear)
+           {
+               front1=0;
+               rear=0;
+           }
+           return element;
+           
+       }
+    }
+
+    int front() {
+        if(front1==rear)
+       {
+           return -1;
+       }
+       else
+       {
+           return arr[front1];
+       }
+    }
+};
