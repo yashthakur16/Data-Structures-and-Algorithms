@@ -1,0 +1,27 @@
+#include <bits/stdc++.h> 
+int minimumCost(int n, string &s, vector<int> &cost) 
+{
+    n--;
+    int ans=0;
+    for(int i=0;i<n;i++)
+    {
+        if(s[i]==s[i+1])
+        {
+            int m;
+            if(cost[i]<cost[i+1])
+            {
+                m=i;
+            }
+            else
+            {
+                m=i+1;
+            }
+            ans=ans+cost[m];
+            s.erase(m,1);
+            cost.erase(cost.begin()+m);
+            n--;
+            i--;
+        }
+    }
+    return ans;
+}
