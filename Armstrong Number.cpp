@@ -1,6 +1,7 @@
 #include <bits/stdc++.h> 
 bool isArmstrong(int num) 
 {
+    
     int ans=num;
     int k=0;
     while(ans!=0)
