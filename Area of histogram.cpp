@@ -17,6 +17,7 @@ private:
         }
         return ans;
     }
+
     
     vector<int> prevSmallerElement(vector<int> arr, int n) {
         stack<int> s;
