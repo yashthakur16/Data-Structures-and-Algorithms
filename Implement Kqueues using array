@@ -97,5 +97,4 @@ int main()
     cout<<endl;
     cout<<q.pop(3);
     cout<<endl;
-
 }
