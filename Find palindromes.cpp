@@ -29,5 +29,4 @@ vector<int> getPalindromes(int n)
 	}
 
 	return ans;
-}
-
+} 
