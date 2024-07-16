@@ -54,7 +54,7 @@ If you have a suggestion that would make this better, please fork the repository
 
 tyash6843@gmail.com (tyash6843@gmail.com)
 
-Project Link: [https://github.com/yourusername/Data-Structures-and-Algorithms](https://github.com/yourusername/Data-Structures-and-Algorithms)
+Project Link: [https://github.com/yashthakur16/Data-Structures-and-Algorithms](https://github.com/yashthakur16/Data-Structures-and-Algorithms)
 
 ## Acknowledgments
 
