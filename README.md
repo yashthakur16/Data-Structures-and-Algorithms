@@ -25,7 +25,7 @@ Ensure you have the following installed on your local machine:
 1. **Clone the repository**:
 
     ```sh
-    git clone https://github.com/yourusername/Data-Structures-and-Algorithms.git
+    git clone https://github.com/yashthakur16/Data-Structures-and-Algorithms.git
     cd Data-Structures-and-Algorithms
     ```
 
